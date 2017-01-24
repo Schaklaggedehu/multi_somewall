@@ -265,7 +265,8 @@ class MultiSomewallBlock extends BlockBase {
       $content[$key] = $value;
 
     }
-    //dump($content);
+
+      //dump($content);
     return array(
       '#theme' => 'multi_somewall',
       '#content' => $content,

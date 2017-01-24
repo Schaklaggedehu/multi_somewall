@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="/icons/font-awesome-4.7.0/css/font-awesome.min.css">
 {{ title_prefix }}
   {% if label %}
       <h2{{ title_attributes }}>{{ label }}</h2>
@@ -5,31 +6,31 @@
   {{ title_suffix }}
 <section class="feed">
     <div class="container">
-        <ul id="filterOptions">
-            <li class="active"><a href="#" class="all">Somewall</a></li>
-            <?php
-        if (strlen($rss_urls) > 3) {
-            echo '
-            <li><a href="#" class="rss">RSS</a></li>
-            ';
-            }
-            if (strlen($fb_accounts) > 2) {
-            echo '
-            <li><a href="#" class="facebook">Facebook</a></li>
-            ';
-            }
-            if (strlen($twitter_accounts) > 2) {
-            echo '
-            <li><a href="#" class="twitter">Twitter</a></li>
-            ';
-            }
-            if (strlen($instagram_accounts) > 2) {
-            echo '
-            <li><a href="#" class="instagram">Instagram</a></li>
-            ';
-            }
-            ?>
-        </ul>
+        {#<ul id="filterOptions">#}
+            {#<li class="active"><a href="#" class="all">Somewall</a></li>#}
+            {#<?php#}
+        {#if (strlen($rss_urls) > 3) {#}
+            {#echo '#}
+            {#<li><a href="#" class="rss">RSS</a></li>#}
+            {#';#}
+            {#}#}
+            {#if (strlen($fb_accounts) > 2) {#}
+            {#echo '#}
+            {#<li><a href="#" class="facebook">Facebook</a></li>#}
+            {#';#}
+            {#}#}
+            {#if (strlen($twitter_accounts) > 2) {#}
+            {#echo '#}
+            {#<li><a href="#" class="twitter">Twitter</a></li>#}
+            {#';#}
+            {#}#}
+            {#if (strlen($instagram_accounts) > 2) {#}
+            {#echo '#}
+            {#<li><a href="#" class="instagram">Instagram</a></li>#}
+            {#';#}
+            {#}#}
+            {#?>#}
+        {#</ul>#}
         <div class="social-feed-container">
         </div>
     </div>
@@ -37,7 +38,6 @@
 <script>
     (function ($, Drupal) {
         "use strict";
-
         Drupal.behaviors.somewall = {
             attach: function (context, settings) {
                 //first, get rid of old data/posts.
@@ -78,12 +78,12 @@
                                 </a> \
                                 <div class="media-body"> \
                                 <p> \
-                                    <i class="fa fa-{{=it.social_network}}"></i> \
+                                     <i class="fa fa-{{=it.social_network}}"></i> \
                                     <span class="author-title">{{=it.author_name}}</span> \
                                     <span class="muted pull-right"> {{=it.time_ago}}</span> \
                                 </p> \
                                 <div class="text-wrapper"> \
-                                    <p class="social-feed-text">{{=it.text}} <a href="{{=it.link}}" target="_blank" class="read-button">Lue lisää!</a></p> \
+                                    <p class="social-feed-text">{{=it.text}} <a href="{{=it.link}}" target="_blank" class="read-button">Read more!</a></p> \
                                 </div> \
                                 </div> \
                             </div> \
@@ -95,32 +95,34 @@
                         }
                     });
                 };
-
                 updateFeed();
 
 
-                $('#filterOptions li a').click(function () {
+                var $filterOptions = $('#filterOptions li a');
+                $filterOptions.click(function () {
                     // fetch the class of the clicked item
                     var ourClass = $(this).attr('class');
 
                     // reset the active class on all the buttons
-                    $('#filterOptions li').removeClass('active');
+                    $filterOptions.removeClass('active');
                     // update the active state on our clicked button
                     $(this).parent().addClass('active');
 
+                    var $social = $('.social-feed-container');
                     if (ourClass == 'all') {
                         // show all our items
-                        $('.social-feed-container').children('div.social-feed-element').show();
+                        $social.children('div.social-feed-element').show();
                     }
                     else {
                         // hide all elements that don't share ourClass
-                        $('.social-feed-container').children('div:not(.' + ourClass + ')').hide();
+                        $social.children('div:not(.' + ourClass + ')').hide();
                         // show all elements that do share ourClass
-                        $('.social-feed-container').children('div.' + ourClass).show();
+                        $social.children('div.' + ourClass).show();
                     }
                     return false;
                 });
             }
+
 
 
         }
