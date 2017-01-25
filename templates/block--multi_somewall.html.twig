@@ -4,8 +4,8 @@
       <h2{{ title_attributes }}>{{ label }}</h2>
   {% endif %}
   {{ title_suffix }}
-<section class="feed">
-    <div class="container">
+<section class="social-feed">
+    <div class="feed-container">
         {#<ul id="filterOptions">#}
             {#<li class="active"><a href="#" class="all">Somewall</a></li>#}
             {#<?php#}
@@ -83,7 +83,7 @@
                                     <span class="muted pull-right"> {{=it.time_ago}}</span> \
                                 </p> \
                                 <div class="text-wrapper"> \
-                                    <p class="social-feed-text">{{=it.text}} <a href="{{=it.link}}" target="_blank" class="read-button">Read more!</a></p> \
+                                    <p class="social-feed-text">{{=it.text}} <a href="{{=it.link}}" target="_blank" class="read-button"> <i class ="fa fa-arrow-circle-right"></i> <i class ="fa fa-{{=it.social_network}}"></i> </a></p> \
                                 </div> \
                                 </div> \
                             </div> \
