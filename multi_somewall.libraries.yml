@@ -10,6 +10,8 @@ socialfeed:
     #https://cdn.rawgit.com/moment/moment/master/moment.js: { type: external, minified: false }
     js/moment-with-locales.min.js: {}
     js/jquery.socialfeed.js: {}
+    js/create_social_posts.js: {}
   dependencies:
     - core/jquery
     - core/drupal
+    - core/drupalSettings
