@@ -6,7 +6,8 @@
     Drupal.behaviors.somewall = {
         attach: function (context, settings) {
             //first, get rid of old data/posts.
-            $('.social-feed-container').html('');
+            $('.social-feed-container').empty();
+
             var updateFeed = function () {
                 $('.social-feed-container').socialfeed({
                     facebook: {
@@ -34,7 +35,7 @@
                     // GENERAL SETTINGS
                     length: drupalSettings.content.length,
                     show_media: drupalSettings.content.show_media,
-                    template_html: '<div class="social-feed-element" dt-create="{{=it.dt_create}}" social-feed-id = "{{=it.id}}> \
+                    template_html: '<div class="social-feed-element" dt-create="{{=it.dt_create}}" social-feed-id = "{{=it.id}}" id = "{{=it.id}}"> \
                                     \
                                         <div class="content"> \
                                             <a class="pull-left" href="{{=it.author_link}}" target="_blank"> \
@@ -52,7 +53,7 @@
                                             </div> \
                                         </div> \
                                     {{=it.attachment}} \
-                                    </div>',
+                                    </div>'
 
                     // callback: function () {
                     //     console.log('all posts are collected');
